@@ -9,10 +9,32 @@ const HERO_IMG =
 
 const NAV = [
   { label: 'Услуги', href: '#services' },
+  { label: 'Цены', href: '#prices' },
   { label: 'Установка', href: '#install' },
   { label: 'Ремонт', href: '#repair' },
   { label: 'Продажа', href: '#sale' },
   { label: 'Контакты', href: '#contacts' },
+];
+
+const PRICES = [
+  { title: 'Установка', items: [
+    { name: 'Монтаж настенного котла', price: 'от 6 500 ₽' },
+    { name: 'Монтаж напольного котла', price: 'от 9 000 ₽' },
+    { name: 'Подключение и обвязка', price: 'от 4 000 ₽' },
+    { name: 'Пусконаладка и запуск', price: 'от 2 500 ₽' },
+  ] },
+  { title: 'Ремонт', items: [
+    { name: 'Диагностика неисправности', price: 'от 1 000 ₽' },
+    { name: 'Чистка теплообменника', price: 'от 3 500 ₽' },
+    { name: 'Замена платы управления', price: 'от 4 500 ₽' },
+    { name: 'Ремонт газовой горелки', price: 'от 3 000 ₽' },
+  ] },
+  { title: 'Продажа', items: [
+    { name: 'Котёл настенный, 24 кВт', price: 'от 28 000 ₽' },
+    { name: 'Котёл напольный, 30 кВт', price: 'от 42 000 ₽' },
+    { name: 'Двухконтурный котёл', price: 'от 35 000 ₽' },
+    { name: 'Подбор оборудования', price: 'бесплатно' },
+  ] },
 ];
 
 const SERVICES = [
@@ -140,6 +162,40 @@ const Index = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Prices */}
+      <section id="prices" className="py-16 md:py-24 scroll-mt-16">
+        <div className="container">
+          <div className="max-w-2xl mb-12">
+            <h2 className="font-display text-4xl md:text-5xl font-600 tracking-tight mb-4">Цены на работы</h2>
+            <p className="text-muted-foreground text-lg">
+              Прозрачные цены без скрытых платежей. Точную стоимость назовём после выезда мастера.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {PRICES.map((col) => (
+              <div
+                key={col.title}
+                className="bg-card rounded-2xl p-8 border border-border hover:border-primary/40 hover:shadow-lg transition-all"
+              >
+                <h3 className="font-display text-2xl font-500 mb-6">{col.title}</h3>
+                <ul className="space-y-4">
+                  {col.items.map((it) => (
+                    <li key={it.name} className="flex items-baseline justify-between gap-4 border-b border-border pb-3 last:border-0 last:pb-0">
+                      <span className="text-muted-foreground">{it.name}</span>
+                      <span className="font-500 text-foreground whitespace-nowrap">{it.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-muted-foreground mt-8 flex items-center gap-2">
+            <Icon name="Info" size={16} className="text-primary" />
+            Цены ориентировочные. Финальная стоимость зависит от модели котла и объёма работ.
+          </p>
         </div>
       </section>
 
